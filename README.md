@@ -45,15 +45,15 @@ Make sure you have the following installed on your machine:
 - [**TypeScript**](https://www.typescriptlang.org/) installed
 - [**pnpm**](https://pnpm.io/) or [**npm**](https://www.npmjs.com/) installed
 
-### Clone the Repository and paste it into the Prompt window as
+### 1. Clone the Repository and paste it into the Prompt window as
 
 ```bash
 git clone https://github.com/saroar-git/product-management
 ```
 
-### Go to 'product-management' folder
+### 2. Go to 'product-management' folder
 
-### Install Dependencies
+### 3. Install Dependencies
 
 ```bash
 pnpm install
@@ -61,7 +61,7 @@ pnpm install
 
 <br/> ( if you can't run it then install and setup pnpm globally)
 
-### Configure Environment Variables
+### 4. Configure Environment Variables
 
 Create a .env file in the root of the project and add the following environment variables:
 
@@ -70,13 +70,13 @@ PORT=5000
 DB_URL="setup your MongoDB address"
 ```
 
-### Compile TypeScript inti JavaScript
+### 5. Compile TypeScript inti JavaScript
 
 ```bash
 pnpm build
 ```
 
-### Start the Application
+### 6. Start the Application
 
 ```bash
 pnpm start
