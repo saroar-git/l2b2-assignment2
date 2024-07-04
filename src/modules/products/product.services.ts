@@ -20,9 +20,28 @@ const getProductByIdFromDB = async (id: string) => {
 };
 
 // update product by id
+const updateProductByIdFromDB = async (id: string, productData: TProduct) => {
+  const result = await ProductModel.findByIdAndUpdate(id, productData);
+  return result;
+};
+
+// delete product by id
+const deleteProductByIdFromDB = async (id: string) => {
+  const result = await ProductModel.findByIdAndDelete(id);
+  return result;
+};
+
+// Search a product
+// const searchProductFromDB = async (query: any) => {
+//   const result = await ProductModel.find(query);
+//   return result;
+// };
 
 export const ProductServices = {
   createProductIntoDB,
   getAllProductsFromDB,
-  getProductByIdFromDB
+  getProductByIdFromDB,
+  updateProductByIdFromDB,
+  deleteProductByIdFromDB,
+  // searchProductFromDB,
 };
