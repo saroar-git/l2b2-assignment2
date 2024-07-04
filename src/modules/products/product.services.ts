@@ -7,15 +7,16 @@ const createProductIntoDB = async (productData: TProduct) => {
   return result;
 };
 
-// get all products
-const getAllProductsFromDB = async () => {
-  const result = await ProductModel.find();
-  return result;
+// get all products and query search
+export const getAllProductsFromDB = async (
+  query: any = {},
+): Promise<TProduct[]> => {
+  return await ProductModel.find(query);
 };
 
-// get product by id
-const getProductByIdFromDB = async (id: string) => {
-  const result = await ProductModel.findById(id);
+// get single product by id
+const getSingleProductByIdFromDB = async (_id: string) => {
+  const result = await ProductModel.findOne({ _id });
   return result;
 };
 
@@ -31,17 +32,10 @@ const deleteProductByIdFromDB = async (id: string) => {
   return result;
 };
 
-// Search a product
-// const searchProductFromDB = async (query: any) => {
-//   const result = await ProductModel.find(query);
-//   return result;
-// };
-
 export const ProductServices = {
   createProductIntoDB,
   getAllProductsFromDB,
-  getProductByIdFromDB,
+  getSingleProductByIdFromDB,
   updateProductByIdFromDB,
   deleteProductByIdFromDB,
-  // searchProductFromDB,
 };

@@ -45,13 +45,13 @@ Make sure you have the following installed on your machine:
 - [**TypeScript**](https://www.typescriptlang.org/) installed
 - [**pnpm**](https://pnpm.io/) or [**npm**](https://www.npmjs.com/) installed
 
-### Clone the Repository
+### Clone the Repository and paste it into the Prompt window as
 
 ```bash
 git clone https://github.com/saroar-git/product-management
 ```
 
-### Go to 'product-management' folder and open Prompt or VS Code
+### Go to 'product-management' folder
 
 ### Install Dependencies
 
