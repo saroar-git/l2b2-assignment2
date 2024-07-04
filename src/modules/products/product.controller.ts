@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import { ProductServices } from "./product.services";
+import { TProduct } from "./product.interface";
+import { ZodError } from "zod";
 import {
   productValidationSchema,
   partialProductValidationSchema,
 } from "./product.validation";
-import { ZodError } from "zod";
-import { TProduct } from "./product.interface";
 
-// Create a New Product
+//* Create a New Product
 const createProduct = async (req: Request, res: Response) => {
   try {
     const productData = req.body;
@@ -31,7 +31,7 @@ const createProduct = async (req: Request, res: Response) => {
   }
 };
 
-// Retrieve a List of All Products and search term for them
+//* Retrieve a List of All Products and search term for them
 const getAllProducts = async (req: Request, res: Response) => {
   try {
     // search functionality
@@ -84,7 +84,7 @@ const getAllProducts = async (req: Request, res: Response) => {
   }
 };
 
-// Retrieve a Specific Product by ID
+//* Retrieve a Specific Product by ID
 const getProductById = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
@@ -96,6 +96,7 @@ const getProductById = async (req: Request, res: Response) => {
         .json({ success: false, message: "Product not found" });
     }
 
+    // success response
     res.status(200).json({
       success: true,
       message: "Product fetched successfully!",
@@ -110,15 +111,14 @@ const getProductById = async (req: Request, res: Response) => {
   }
 };
 
-// Update a Specific Product by ID
+//* Update a Specific Product by ID
 const updateProductById = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const updateData = req.body;
 
-    // validate product data
+    // validation and update product data
     const parsedProductData = partialProductValidationSchema.parse(updateData);
-
     const result = await ProductServices.updateProductByIdFromDB(
       productId,
       parsedProductData as TProduct,

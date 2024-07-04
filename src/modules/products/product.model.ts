@@ -1,6 +1,20 @@
 import { Schema, model } from "mongoose";
 import { TProduct } from "./product.interface";
 
+const variantSchema = new Schema(
+  {
+    type: {
+      type: String,
+      required: [true, "Product variant type is required"],
+    },
+    value: {
+      type: String,
+      required: [true, "Product variant value is required"],
+    },
+  },
+  { _id: false },
+);
+
 const productSchema = new Schema<TProduct>({
   name: {
     type: String,
@@ -23,20 +37,10 @@ const productSchema = new Schema<TProduct>({
     type: [String],
     required: [true, "Product tags is required"],
   },
-  variants: [
-    {
-      type: {
-        type: String,
-        required: [true, "Product variant is required"],
-        _id: false,
-      },
-      value: {
-        type: String,
-        required: [true, "Product value is required"],
-        _id: false,
-      },
-    },
-  ],
+  variants: {
+    type: [variantSchema],
+    required: [true, "Product variants are required"],
+  },
   inventory: {
     quantity: {
       type: Number,
@@ -45,7 +49,7 @@ const productSchema = new Schema<TProduct>({
     inStock: {
       type: Boolean,
       default: true,
-      required: [true, "Product quantity value is required"],
+      required: [true, "Product inStock value is required"],
     },
   },
 });

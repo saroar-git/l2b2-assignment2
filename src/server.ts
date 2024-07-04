@@ -2,8 +2,6 @@ import mongoose from "mongoose";
 import config from "./config";
 import app from "./app";
 
-main().catch((err) => console.log(err));
-
 async function main() {
   try {
     await mongoose.connect(config.url as string);
@@ -15,3 +13,5 @@ async function main() {
     console.error(error);
   }
 }
+
+main();
