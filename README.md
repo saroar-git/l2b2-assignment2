@@ -70,7 +70,7 @@ PORT=5000
 DB_URL="setup your MongoDB address"
 ```
 
-### 5. Compile TypeScript inti JavaScript
+### 5. Compile TypeScript into JavaScript
 
 ```bash
 pnpm build
