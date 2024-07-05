@@ -17,14 +17,15 @@ app.use("/api/orders", OrderRoutes);
 
 //* not found route
 app.use((req: Request, res: Response) => {
-  res.status(404).json({
-    success: false,
-    message: "Route not found",
-  });
+  if (req.method === "GET" && req.originalUrl === "/") {
+    res.json({ success: true, message: "Welcome to Product Management APIs" });
+    return;
+  }
+  res.status(404).json({ success: false, message: "Route not found" });
 });
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
+  res.send("Welcome to Product Management APIs");
 });
 
 export default app;
