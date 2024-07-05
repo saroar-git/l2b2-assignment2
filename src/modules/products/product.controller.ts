@@ -51,7 +51,7 @@ const getAllProducts = async (req: Request, res: Response) => {
     // get all products from the database
     const result = await ProductServices.getAllProductsFromDB(query);
 
-    // if no products are found, return a 404 status code
+    // if no products are found
     if (!result || result.length === 0) {
       return res
         .status(404)
@@ -146,11 +146,19 @@ const updateProductById = async (req: Request, res: Response) => {
   }
 };
 
-// Delete a Specific Product by ID
+//* Delete a Specific Product by ID
 const deleteProductById = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const result = await ProductServices.deleteProductByIdFromDB(productId);
+
+    // if product does not match
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
 
     // success response
     res.status(200).json({

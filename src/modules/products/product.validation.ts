@@ -8,7 +8,7 @@ const variantValidationSchema = z.object({
   value: z
     .string()
     .min(1, { message: "Variant value must be at least 1 character." })
-    .max(20, { message: "Variant value must be at most 20 characters long." }),
+    .max(50, { message: "Variant value must be at most 20 characters long." }),
 });
 
 const inventoryValidationSchema = z.object({
