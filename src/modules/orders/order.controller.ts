@@ -43,7 +43,7 @@ const getAllOrders = async (req: Request, res: Response) => {
       } else {
         return res.status(200).json({
           success: true,
-          message: "No orders found!",
+          message: "Order not found",
           data: [],
         });
       }
